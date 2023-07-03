@@ -8,19 +8,19 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class OrderDetails extends Model
+class Size extends Model
 {
     use HasFactory, SoftDeletes;
-    protected $table = 'order_details';
+    protected $table = 'sizes';
     protected $guarded = [];
 
-    public function order(): BelongsTo
+    public function product(): BelongsTo
     {
-        return $this->belongsTo(Order::class, 'order_id');
+        return $this->belongsTo(Product::class, 'product_id');
     }
 
     public function ColorSize(): HasMany
     {
-        return $this->hasMany(ColorSize::class, 'color_size_id');
+        return $this->hasMany(ColorSize::class, 'size_id');
     }
 }

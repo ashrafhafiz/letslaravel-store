@@ -5,23 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Dyrynda\Database\Support\CascadeSoftDeletes;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 
-class Order extends Model
+class Color extends Model
 {
     use HasFactory, SoftDeletes, CascadeSoftDeletes;
-    protected $table = 'orders';
+    protected $table = 'colors';
     protected $guarded = [];
 
-    public function user(): BelongsTo
+    public function product(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->belongsTo(Product::class, 'product_id');
     }
 
-    public function orderDetails(): HasOne
+    public function ColorSize(): HasMany
     {
-        return $this->hasOne(OrderDetails::class, 'order_details_id');
+        return $this->hasMany(ColorSize::class, 'color_id');
     }
 }

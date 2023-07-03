@@ -15,8 +15,8 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('order_id');
             $table->foreign('order_id')->references('id')->on('orders')->cascadeOnDelete();
-            $table->unsignedBigInteger('product_color_size_id');
-            $table->foreign('product_color_size_id')->references('id')->on('product_colors_sizes')->cascadeOnDelete();
+            $table->unsignedBigInteger('color_size_id');
+            $table->foreign('color_size_id')->references('id')->on('color_size')->cascadeOnDelete();
             $table->integer('quantity');
             $table->decimal('price', 10, 2)->nullable();
             $table->decimal('discount', 10, 2)->nullable();
